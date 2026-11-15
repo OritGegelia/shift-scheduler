@@ -1,0 +1,14 @@
+[
+  {"model": "schedule.employee", "pk": 1, "fields": {"full_name": "Антонов А. (Нижний, не деж.)", "is_active": true, "is_regular_duty": false, "sort_order": 10}},
+  {"model": "schedule.employee", "pk": 2, "fields": {"full_name": "Борисов Б. (Нижний, не деж.)", "is_active": true, "is_regular_duty": false, "sort_order": 20}},
+  {"model": "schedule.employee", "pk": 3, "fields": {"full_name": "Волков В. (Нижний, не деж.)", "is_active": true, "is_regular_duty": false, "sort_order": 30}},
+  {"model": "schedule.employee", "pk": 4, "fields": {"full_name": "Григорьев Г. (Нижний, деж.)", "is_active": true, "is_regular_duty": true, "sort_order": 40}},
+  {"model": "schedule.employee", "pk": 5, "fields": {"full_name": "Дмитриев Д. (Нижний, деж.)", "is_active": true, "is_regular_duty": true, "sort_order": 50}},
+  {"model": "schedule.employee", "pk": 6, "fields": {"full_name": "Ермаков Е. (Нижний, деж.)", "is_active": true, "is_regular_duty": true, "sort_order": 60}},
+  {"model": "schedule.employee", "pk": 7, "fields": {"full_name": "Жуков Ж. (Москва, деж.)", "is_active": true, "is_regular_duty": true, "sort_order": 70}},
+  {"model": "schedule.employee", "pk": 8, "fields": {"full_name": "Зайцев З. (Москва, деж.)", "is_active": true, "is_regular_duty": true, "sort_order": 80}},
+  {"model": "schedule.employee", "pk": 9, "fields": {"full_name": "Исаев И. (Москва, деж.)", "is_active": true, "is_regular_duty": true, "sort_order": 90}},
+  {"model": "schedule.employee", "pk": 10, "fields": {"full_name": "Кузнецов К. (Москва, не деж.)", "is_active": true, "is_regular_duty": false, "sort_order": 100}},
+  {"model": "schedule.employee", "pk": 11, "fields": {"full_name": "Лебедев Л. (Москва, не деж.)", "is_active": true, "is_regular_duty": false, "sort_order": 110}},
+  {"model": "schedule.employee", "pk": 12, "fields": {"full_name": "Морозов М. (Москва, не деж., уволен)", "is_active": false, "is_regular_duty": false, "sort_order": 120}}
+]

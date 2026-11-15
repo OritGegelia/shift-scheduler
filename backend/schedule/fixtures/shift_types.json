@@ -1,0 +1,82 @@
+[
+  {
+    "model": "schedule.shifttype",
+    "pk": 1,
+    "fields": {
+      "shift_code": "1",
+      "shift_name": "Дневное дежурство",
+      "duty_kind": "day",
+      "hours": 8
+    }
+  },
+  {
+    "model": "schedule.shifttype",
+    "pk": 2,
+    "fields": {
+        "shift_code": "2",
+        "shift_name": "Начало ночного",
+        "duty_kind": "night_start",
+        "hours": 8
+    }
+  },
+  {
+    "model": "schedule.shifttype",
+    "pk": 3,
+    "fields": {
+        "shift_code": "3",
+        "shift_name": "Конец ночного",
+        "duty_kind": "night_end",
+        "hours": 8
+    }
+  },
+  {
+    "model": "schedule.shifttype",
+    "pk": 4,
+    "fields": {
+        "shift_code": "4",
+        "shift_name": "Не дежурство",
+        "duty_kind": "regular",
+        "hours": 8
+    }
+  },
+  {
+    "model": "schedule.shifttype",
+    "pk": 5,
+    "fields": {
+        "shift_code": "4*",
+        "shift_name": "Не дежурство сокращенное",
+        "duty_kind": "regular_short",
+        "hours": 7
+    }
+  },
+  {
+    "model": "schedule.shifttype",
+    "pk": 6,
+    "fields": {
+        "shift_code": "В",
+        "shift_name": "Выходной",
+        "duty_kind": "dayoff",
+        "hours": 0
+    }
+  },
+  {
+    "model": "schedule.shifttype",
+    "pk": 7,
+    "fields": {
+        "shift_code": "от",
+        "shift_name": "Отпуск",
+        "duty_kind": "vacation",
+        "hours": 0
+    }
+  },
+  {
+    "model": "schedule.shifttype",
+    "pk": 8,
+    "fields": {
+        "shift_code": "отв",
+        "shift_name": "Выходной в отпуске",
+        "duty_kind": "dayoff_vacation",
+        "hours": 0
+    }
+  }
+]
