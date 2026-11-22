@@ -37,24 +37,12 @@ export default function App() {
     setMonth((index % 12) + 1)
   }
 
-  async function handleCellChange(employeeId, day, shiftTypeId) {
+    async function handleCellChange(employeeId, day, shiftTypeId) {
     setSaveError(null)
     try {
-      const result = await updateAssignment(employeeId, day, shiftTypeId)
-      setData((prev) => {
-        if (!prev.days.includes(result.date)) return prev
-        return {
-          ...prev,
-          employees: prev.employees.map((employee) =>
-            employee.id === result.employee
-              ? {
-                  ...employee,
-                  cells: { ...employee.cells, [result.date]: result.shift_type },
-                }
-              : employee
-          ),
-        }
-      })
+      await updateAssignment(employeeId, day, shiftTypeId)
+      const fresh = await fetchSchedule(year, month)
+      setData(fresh)
     } catch (err) {
       setSaveError(err.message)
     }
@@ -71,7 +59,13 @@ export default function App() {
       {error && <p className="error">{error}</p>}
       {saveError && <p className="error">Не удалось сохранить: {saveError}</p>}
       {!data && !error && <p>Загрузка…</p>}
-      {data && <ScheduleGrid data={data} onCellChange={handleCellChange} />}
+      {data && (
+        <ScheduleGrid
+          data={data}
+          onCellChange={handleCellChange}
+          monthTitle={`${MONTH_NAMES[month - 1].toLowerCase()} ${year}`}
+        />
+      )}
     </div>
   )
 }

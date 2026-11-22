@@ -4,6 +4,7 @@ import calendar
 from .models import ShiftType, Employee, Assignment
 from datetime import date
 from django.core.exceptions import ValidationError
+from django.db.models import Sum, Count
 
 # Получение базовой сетки без смен
 
@@ -22,12 +23,31 @@ def schedule_view(request):
     days_in_month = calendar.monthrange(year, month)[1]
 
     assignments = Assignment.objects.filter(date__year=year, date__month=month)
+    rows = assignments.values("employee_id").annotate(total=Sum("shift_type__hours"))
+    cover_rows = (
+            assignments
+            .filter(shift_type__duty_kind__in=["day", "night_start", "night_end"])
+            .values("date", "shift_type__duty_kind")
+            .annotate(n=Count("id"))
+        )
+
 
     days = []
     shift_types = []
     employees = []
 
     cells_by_employee = {}
+    totals = {}
+    coverage = {}
+
+    for day in range(1, days_in_month + 1):
+            coverage[date(year, month, day).isoformat()] = {"day": 0, "night_start": 0, "night_end": 0}
+
+    for row in cover_rows:
+        coverage[row["date"].isoformat()][row["shift_type__duty_kind"]] = row["n"]
+
+    for row in rows:
+        totals[row["employee_id"]] = row["total"]
 
     for employee in Employee.objects.all():
         cells_by_employee[employee.id] = {}
@@ -54,7 +74,8 @@ def schedule_view(request):
             "is_regular_duty": employee.is_regular_duty,
             "sort_order": employee.sort_order,
             "id": employee.id,
-            "cells": cells_by_employee[employee.id]
+            "cells": cells_by_employee[employee.id],
+            "total_hours": totals.get(employee.id, 0),
         })
 
     return Response({
@@ -64,6 +85,7 @@ def schedule_view(request):
         "days": days,
         "shift_types": shift_types,
         "employees": employees,
+        "coverage": coverage,
         "assigments_count": assignments.count()})
 
 @api_view(['PATCH'])
