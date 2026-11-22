@@ -1,0 +1,82 @@
+.page {
+  font-family: system-ui, sans-serif;
+  padding: 16px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.toolbar h1 {
+  font-size: 20px;
+  margin: 0;
+  min-width: 200px;
+  text-align: center;
+}
+
+.error {
+  color: #b00020;
+}
+
+.grid-wrapper {
+  overflow-x: auto;
+}
+
+.grid {
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.grid th,
+.grid td {
+  border: 1px solid #ccc;
+  padding: 4px;
+  text-align: center;
+  min-width: 30px;
+}
+
+.grid th.weekend {
+  background: #fde8e8;
+}
+
+.weekday {
+  font-weight: normal;
+  font-size: 11px;
+  color: #666;
+}
+
+.name-col {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  text-align: left !important;
+  white-space: nowrap;
+  min-width: 200px !important;
+  z-index: 1;
+}
+
+.cell.clickable {
+  cursor: pointer;
+}
+
+.cell.clickable:hover {
+  outline: 2px solid #4a7bd0;
+  outline-offset: -2px;
+}
+
+.cell.editing select {
+  max-width: 120px;
+  font-size: 13px;
+}
+
+.kind-day { background: #fff3b0; }
+.kind-night_start { background: #b8c7f0; }
+.kind-night_end { background: #8fa4e0; }
+.kind-regular { background: #fff; }
+.kind-regular_short { background: #f0f0f0; }
+.kind-dayoff { background: #fde8e8; color: #888; }
+.kind-vacation { background: #c8efc8; }
+.kind-dayoff_vacation { background: #e0f5e0; }
